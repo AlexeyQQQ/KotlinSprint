@@ -1,16 +1,18 @@
 package lesson_1
 
+const val SECOND_IN_MINUTE = 60
+const val SECOND_IN_HOUR = 3600
+const val SECOND_IN_GAGARIN_FLIGHT = 6480
+
 fun main() {
-    var seconds = 6480
+    var seconds = SECOND_IN_GAGARIN_FLIGHT
 
-    val hours = seconds / 3600
-    seconds -= hours * 3600
+    val hours = seconds / SECOND_IN_HOUR
+    seconds -= hours * SECOND_IN_HOUR
 
-    val minutes = seconds / 60
-    seconds -= minutes * 60
+    val minutes = seconds / SECOND_IN_MINUTE
+    seconds -= minutes * SECOND_IN_MINUTE
 
-    val hoursCorrect = if (hours < 10) "0$hours" else "$hours"
-    val minutesCorrect = if (minutes < 10) "0$minutes" else "$minutes"
-    val secondsCorrect = if (seconds < 10) "0$seconds" else "$seconds"
-    println("$hoursCorrect:$minutesCorrect:$secondsCorrect")
+    val result = String.format("0%s:%s:0%s", hours, minutes, seconds)
+    println(result)
 }
