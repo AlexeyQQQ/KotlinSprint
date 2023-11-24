@@ -8,5 +8,6 @@ fun main() {
     val depositPeriod = 20
 
     val result = sumFromClient * (1 + percentRate / 100).pow(depositPeriod)
+
     println(String.format("%.3f", result))
 }
