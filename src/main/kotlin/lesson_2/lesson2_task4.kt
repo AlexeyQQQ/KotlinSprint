@@ -1,13 +1,14 @@
 package lesson_2
 
 fun main() {
-    val buff = 1.2
+    val buff = 20
     val crystalOre = 7
     val ironOre = 11
 
-    val bonusCrystalOre = crystalOre * buff - crystalOre
-    val bonusIronOre = ironOre * buff - ironOre
+    val percentRate = 1 + buff.toDouble() / 100
+    val bonusCrystalOre = crystalOre * percentRate - crystalOre
+    val bonusIronOre = ironOre * percentRate - ironOre
 
-    println(bonusCrystalOre.toInt())
-    println(bonusIronOre.toInt())
+    println("Crystal Ore bonus: ${bonusCrystalOre.toInt()}")
+    println("Iron Ore bonus: ${bonusIronOre.toInt()}")
 }
