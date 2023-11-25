@@ -1,12 +1,13 @@
 package lesson_4
 
-fun main() {
-    val numberOfTables = 13
-    val bookedToday = numberOfTables
-    val bookedTomorrow = numberOfTables - 4
+const val NUMBER_OF_TABLES = 13
 
-    val freeToday = bookedToday < numberOfTables
-    val freeTomorrow = bookedTomorrow < numberOfTables
+fun main() {
+    val bookedToday = 13
+    val bookedTomorrow = 9
+
+    val freeToday = bookedToday < NUMBER_OF_TABLES
+    val freeTomorrow = bookedTomorrow < NUMBER_OF_TABLES
 
     println("Доступность столиков на сегодня: $freeToday,\nДоступность столиков на завтра: $freeTomorrow.")
 }
