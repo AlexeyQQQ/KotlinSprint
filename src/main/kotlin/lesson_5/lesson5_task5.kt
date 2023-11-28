@@ -3,9 +3,9 @@ package lesson_5
 fun main() {
     val winNumbers = mutableListOf<Int>()
     repeat(3) {
-        var number = (Math.random() * 43).toInt()
+        var number = (0..42).random()
         while (winNumbers.contains(number)) {
-            number = (Math.random() * 43).toInt()
+            number = (0..42).random()
         }
         winNumbers.add(number)
     }
