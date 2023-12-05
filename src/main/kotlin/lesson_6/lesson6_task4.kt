@@ -7,14 +7,15 @@ fun main() {
     println("Попробуйте угадать число от 1 до 9! У вас ${counter--} попыток:")
     var userNumber = readln().toInt()
 
-    while (userNumber != number && counter > 0) {
-        println("Неверно! Кол-во оставшихся попыток: ${counter--}")
-        userNumber = readln().toInt()
+    while (number != userNumber) {
+        if (counter > 0) {
+            println("Неверно! Кол-во оставшихся попыток: ${counter--}")
+            userNumber = readln().toInt()
+        } else {
+            println("Вы так и не угадали. Было загадано число $number")
+            return
+        }
     }
 
-    if (number == userNumber) {
-        println("Вы угадали. Это была великолепная игра!")
-    } else {
-        println("Вы так и не угадали. Было загадано число $number")
-    }
+    println("Вы угадали. Это была великолепная игра!")
 }
