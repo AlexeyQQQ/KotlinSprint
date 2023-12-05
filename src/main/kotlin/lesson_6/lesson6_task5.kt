@@ -11,21 +11,19 @@ fun main() {
     )
     var userAnswer = readln().toInt()
 
-    while ((userAnswer != number1 + number2) && (counter > 0)) {
-        number1 = (1..9).random()
-        number2 = (1..9).random()
-        println("Неверно! Кол-во оставшихся попыток: ${counter--}.\nРешите новый пример: $number1 + $number2 = ?")
-        userAnswer = readln().toInt()
+    while (userAnswer != number1 + number2) {
+        if (counter > 0) {
+            number1 = (1..9).random()
+            number2 = (1..9).random()
+            println("Неверно! Кол-во оставшихся попыток: ${counter--}.\nРешите новый пример: $number1 + $number2 = ?")
+            userAnswer = readln().toInt()
+        } else {
+            println("Доступ запрещен!")
+            return
+        }
     }
 
-    if (userAnswer != number1 + number2) {
-        println("Доступ запрещен!")
-        return
-    } else {
-        println("Добро пожаловать!")
-    }
-
-    println("Создайте логин:")
+    println("Добро пожаловать! Создайте логин:")
     val name = readln()
     println("Создайте пароль:")
     val password = readln()
