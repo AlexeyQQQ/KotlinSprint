@@ -18,7 +18,7 @@ fun main() {
 
 fun authorize(login: String, password: String): String? {
     return if (login == LOGIN && password == PASSWORD) {
-        "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9"
+        generateToken()
     } else {
         null
     }
@@ -30,4 +30,15 @@ fun returnCart(token: String?): String {
     } else {
         "Введен неправильный логин или пароль!"
     }
+}
+
+fun generateToken(): String {
+    var token = ""
+    val listOfRanges = listOf(('0'..'9'), ('a'..'z'), ('A'..'Z'))
+
+    repeat(32) {
+        token += listOfRanges.random().random()
+    }
+
+    return token
 }
