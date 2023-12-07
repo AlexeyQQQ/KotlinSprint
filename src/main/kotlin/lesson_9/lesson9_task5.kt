@@ -1,15 +1,15 @@
 package lesson_9
 
 fun main() {
-    val listOfIngredients = mutableListOf<String>()
+    val setOfIngredients = mutableSetOf<String>()
 
-    while (listOfIngredients.size != 5) {
-        println("Введите ингредиент ${listOfIngredients.size + 1}:")
-        listOfIngredients.add(readln())
+    for (i in 1..5) {
+        println("Введите ингредиент ${i}:")
+        setOfIngredients.add(readln())
     }
-    println("Исходная строка: ${listOfIngredients.joinToString()}")
+    println("Исходная строка: ${setOfIngredients.joinToString()}")
 
-    val convertedList = listOfIngredients.distinct().sorted()
+    val convertedList = setOfIngredients.sorted()
     println(
         "Строка без повторов, в алфавитном порядке, с заглавной буквы:\n" +
                 convertedList.joinToString().substring(0, 1).uppercase()
