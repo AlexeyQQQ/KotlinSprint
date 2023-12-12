@@ -6,12 +6,12 @@ fun main() {
     val alex = forum.createNewUser("Alex")
     val john = forum.createNewUser("John")
 
-    repeat(2) {
-        forum.createNewMessage(alex.userId)
-        forum.createNewMessage(john.userId)
-        forum.createNewMessage(7777)
-        forum.createNewMessage(456456)
-    }
+    forum.createNewMessage(alex.userId, "Привет")
+    forum.createNewMessage(john.userId, "Здравствуйте!")
+    forum.createNewMessage(alex.userId, "Как дела?")
+    forum.createNewMessage(john.userId, "Нормально, а у тебя?")
+    forum.createNewMessage(7777, "тест с несуществующим ID")
+    forum.createNewMessage(456456, "тест с несуществующим ID")
 
     forum.printThread()
 }
@@ -28,10 +28,10 @@ class Forum() {
         return user
     }
 
-    fun createNewMessage(userId: Int) {
+    fun createNewMessage(userId: Int, userMessage: String) {
         for (i in listOfUsers) {
             if (i.userId == userId) {
-                val message = ForumMessage(userId, "Сообщение от пользователя c id $userId")
+                val message = ForumMessage(userId, userMessage)
                 listOfMessages.add(message)
             }
         }
@@ -52,10 +52,10 @@ class Forum() {
 class ForumUser(
     val userId: Int,
     val userName: String,
-) {}
+)
 
 
 class ForumMessage(
     val authorId: Int,
     val message: String,
-) {}
+)
