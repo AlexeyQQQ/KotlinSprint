@@ -12,13 +12,6 @@ abstract class Product() {
 }
 
 
-interface Selection {
-    fun selectionAccessories() {
-        println("Выполняется поиск...")
-    }
-}
-
-
 class MusicalInstrument(
     override val name: String,
     override val number: Int,
@@ -34,3 +27,10 @@ class Accessories(
     override val name: String,
     override val number: Int,
 ) : Product()
+
+
+interface Selection {
+    fun selectionAccessories() {
+        println("Выполняется поиск...")
+    }
+}
