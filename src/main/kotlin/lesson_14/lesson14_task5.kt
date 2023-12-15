@@ -6,18 +6,27 @@ fun main() {
     val alex = chat.createNewUser("Alex")
     val john = chat.createNewUser("John")
 
-    val parentId1 = chat.addMessage(alex, "Привет")
-    chat.addThreadMessage(john, parentId1, "Здравствуйте!")
-    chat.addThreadMessage(alex, parentId1, "Как дела?")
-    chat.addThreadMessage(john, parentId1, "Нормально, а у тебя?")
+    chat.addMessage(alex, "ТЕСТ, родительское 1")
+    chat.addMessage(alex, "ТЕСТ, родительское 2")
 
-    val parentId2 = chat.addMessage(alex, "Го в эту ветку!")
-    chat.addThreadMessage(john, parentId2, "Пришел...")
-    chat.addThreadMessage(alex, parentId2, "Отлично!")
+    val parentThread1 = chat.addMessage(alex, "Привет")
+    chat.addThreadMessage(john, parentThread1, "Здравствуйте!")
+    chat.addThreadMessage(alex, parentThread1, "Как дела?")
 
-    val parentId3 = chat.addMessage(john, "Тут тоже ветка есть!")
-    chat.addThreadMessage(john, parentId3, "Аууу... есть тут кто?")
-    chat.addThreadMessage(john, parentId3, "Видимо нет...")
+    val parentThread2 = chat.addMessage(alex, "Го в эту ветку!")
+    chat.addThreadMessage(john, parentThread2, "Пришел...")
+    chat.addThreadMessage(alex, parentThread2, "Отлично!")
+
+    chat.addMessage(john, "ТЕСТ, родительское в середине чата")
+
+    val parentThread3 = chat.addMessage(john, "Тут тоже ветка есть! Как дела?")
+    chat.addThreadMessage(john, parentThread3, "Аууу... ответит мне кто?")
+
+    chat.addThreadMessage(john, parentThread1, "ТЕСТ, дочернее для треда parentThread1")
+    chat.addThreadMessage(alex, parentThread2, "ТЕСТ, дочернее для треда parentThread2")
+    chat.addThreadMessage(john, parentThread3, "ТЕСТ, дочернее для треда parentThread3")
+
+    chat.addMessage(john, "ТЕСТ, родительское последнее")
 
     chat.printChat()
 }
@@ -71,17 +80,13 @@ class Chat {
 
     fun printChat() {
         val threads = listOfChildMessages.groupBy { it.parentMessageId }
-        for (pair in threads) {
-            for (message in listOfMessages) {
-                if (pair.key == message.messageId) {
-                    println("${message.authorName}: ${message.message}")
-                    break
+        for (parMessage in listOfMessages) {
+            println("${parMessage.authorName}: ${parMessage.message}")
+            if (threads.containsKey(parMessage.messageId)) {
+                threads[parMessage.messageId]?.forEach {
+                    println("   ${it.authorName}: ${it.message}")
                 }
             }
-            for (chMessage in pair.value) {
-                println("   ${chMessage.authorName}: ${chMessage.message}")
-            }
-            println("----------")
         }
     }
 }
