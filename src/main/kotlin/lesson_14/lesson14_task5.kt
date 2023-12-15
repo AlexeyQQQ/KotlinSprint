@@ -54,8 +54,8 @@ class Chat {
     }
 
     fun addThreadMessage(user: ChatUser, parentMessageId: Int, userMessage: String) {
-        for (i in listOfUsers) {
-            if (i.userId == user.userId) {
+        for (currentUser in listOfUsers) {
+            if (currentUser.userId == user.userId) {
                 val childMessage = ChildMessage(
                     counterMessageId++,
                     authorId = user.userId,
@@ -71,14 +71,14 @@ class Chat {
 
     fun printChat() {
         val threads = listOfChildMessages.groupBy { it.parentMessageId }
-        for (i in threads) {
+        for (pair in threads) {
             for (message in listOfMessages) {
-                if (i.key == message.messageId) {
+                if (pair.key == message.messageId) {
                     println("${message.authorName}: ${message.message}")
                     break
                 }
             }
-            for (chMessage in i.value) {
+            for (chMessage in pair.value) {
                 println("   ${chMessage.authorName}: ${chMessage.message}")
             }
             println("----------")
@@ -108,12 +108,3 @@ class ChatUser(
     val userId: Int,
     val userName: String,
 )
-
-
-
-
-
-
-
-
-
