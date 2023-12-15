@@ -3,7 +3,6 @@ package lesson_19
 fun main() {
     val listOfPeople = mutableListOf<Human>()
 
-
     while (listOfPeople.size < 5) {
         println("Ведите имя человека:")
         val userName = readln()
