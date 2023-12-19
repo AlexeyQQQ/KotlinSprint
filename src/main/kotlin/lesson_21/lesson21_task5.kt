@@ -14,6 +14,6 @@ fun main() {
 }
 
 fun Map<String, Int>.maxCategory(): String {
-    val max = this.toList().sortedByDescending { (key: String, value: Int) -> value }
-    return max[0].first
+    val max = this.maxBy { it.value }
+    return max.key
 }
