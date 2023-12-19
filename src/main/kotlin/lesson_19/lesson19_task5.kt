@@ -7,9 +7,9 @@ fun main() {
         println("Ведите имя человека:")
         val userName = readln()
 
-        println("Ведите пол человека (М или Ж):")
+        println("Ведите пол человека (М или Ж, в любом регистре):")
         var gender: Gender? = null
-        when (readln()) {
+        when (readln().uppercase()) {
             Gender.MALE.input -> gender = Gender.MALE
             Gender.FEMALE.input -> gender = Gender.FEMALE
             else -> println("Вы что-то перепутали, попробуйте заново")
