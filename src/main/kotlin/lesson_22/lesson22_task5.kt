@@ -10,13 +10,12 @@ fun main() {
         4.22,
     )
 
-    val (name, description, date, distance) = alphaCentauri
     println(
         """
-        Название: $name
-        Описание: $description
-        Дата и время: $date
-        Расстояние в световых годах: $distance
+        Название: ${alphaCentauri.component1()}
+        Описание: ${alphaCentauri.component2()}
+        Дата и время: ${alphaCentauri.component3()}
+        Расстояние в световых годах: ${alphaCentauri.component4()}
     """.trimIndent()
     )
 }
